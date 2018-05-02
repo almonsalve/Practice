@@ -1,6 +1,22 @@
+import java.util.Date;
+
+// Utilizes % and /
+/**
+ * A class for calculating time values.
+ * 
+ * @author Ariana Monsalve
+ *
+ */
+
 public class TimeCalc {
+  /**
+   * Converts a 24-hour time to a 12-hour time with an AM or PM suffix.
+   * 
+   * @param timeInput
+   *          Time in 24-hour military time.
+   * @return The converted time.
+   */
   public static String calculateTime(int timeInput) {
-    String time = "";
     int hourInput = timeInput / 100;
     int minInput = timeInput % 100;
     int ampm = 0;
@@ -24,14 +40,19 @@ public class TimeCalc {
     } else {
       timeSuffix = "AM";
     }
-    if(minInput >= 10) {
+    if (minInput >= 10) {
       minutes = "" + minInput;
     } else {
       minutes = "0" + minInput;
     }
-
+    String time = "";
     time = hours + ":" + minutes + timeSuffix;
-    
+
     return time;
+  }
+
+  public static String currentTime() {
+    Date date = new Date(System.currentTimeMillis());
+    return date.toString();
   }
 }
